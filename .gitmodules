@@ -1,0 +1,6 @@
+[submodule "source/common"]
+	path = source/common
+	url = git@github.com:akatsuki-alt/common.git
+[submodule "source/beatmaps"]
+	path = source/beatmaps
+	url = git@github.com:akatsuki-alt/beatmaps-svc.git
