@@ -9,7 +9,9 @@ class Config:
         self.postgres_password = "postgres"
         self.ossapi_id = ""
         self.ossapi_secret = ""
+        self.storage = "../storage"
         self.load_env()
+        os.makedirs(self.storage, exist_ok=True)
 
     def load_env(self):
         for k,v in os.environ.items():
