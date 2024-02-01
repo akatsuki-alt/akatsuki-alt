@@ -5,6 +5,9 @@ POSTGRES_PORT="5432"
 POSTGRES_USER="postgres"
 POSTGRES_PASSWORD="postgres"
 
+OSSAPI_ID=""
+OSSAPI_SECRET=""
+
 def load_env():
     for k,v in os.environ.keys():
         if k in __dict__:
