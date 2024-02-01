@@ -1,14 +1,18 @@
 import os
 
-POSTGRES_HOST="localhost"
-POSTGRES_PORT="5432"
-POSTGRES_USER="postgres"
-POSTGRES_PASSWORD="postgres"
+class Config:
 
-OSSAPI_ID=""
-OSSAPI_SECRET=""
+    def __init__(self) -> None:
+        self.postgres_host = "localhost"
+        self.postgres_port = "5432"
+        self.postgres_user = "postgres"
+        self.postgres_password = "postgres"
+        self.ossapi_id = ""
+        self.ossapi_secret = ""
+        self.load_env()
 
-def load_env():
-    for k,v in os.environ.keys():
-        if k in __dict__:
-            __dict__[k] = v
+    def load_env(self):
+        for k,v in os.environ.items():
+            if k.lower() in self.__dict__:
+                self.__dict__[k.lower()] = v
+
