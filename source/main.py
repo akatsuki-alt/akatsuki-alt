@@ -1,15 +1,15 @@
+from common.logging import get_logger
 from common.service import Service
 from typing import List
 
 import beatmaps.service as beatmaps_svc
 import common.app as app
-import logging
 import signal
 import sys
 
 class ServiceHandler:
     
-    logger = logging.getLogger("ServiceHandler")
+    logger = get_logger("ServiceHandler")
     def __init__(self) -> None:
         self.services: List[Service] = self.get_services()
         signal.signal(signal.SIGTERM, self.signal_handler)

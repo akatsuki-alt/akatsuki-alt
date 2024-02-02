@@ -10,6 +10,7 @@ class Config:
         self.ossapi_id = ""
         self.ossapi_secret = ""
         self.storage = "../storage"
+        self.logs_storage = "../logs"
         self.load_env()
         os.makedirs(self.storage, exist_ok=True)
 
