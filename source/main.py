@@ -9,7 +9,7 @@ import sys
 
 class ServiceHandler:
     
-    logger = get_logger("ServiceHandler")
+    logger = get_logger("svc_handler")
     def __init__(self) -> None:
         self.services: List[Service] = self.get_services()
         signal.signal(signal.SIGTERM, self.signal_handler)
