@@ -15,9 +15,14 @@ class ServiceHandler:
         self.services: List[Service] = self.get_services()
         signal.signal(signal.SIGTERM, self.signal_handler)
         signal.signal(signal.SIGINT, self.signal_handler)
+        if app.config.debug:
+            app.events.add_handler(self.event_handler)
     
     def signal_handler(self, sig, frame):
         app.STOPPED = True
+    
+    def event_handler(self, event):
+        self.logger.debug(f"Received {type(event)}\n{repr(event)}")
     
     def get_services(self):
         # TODO: disable services based on config

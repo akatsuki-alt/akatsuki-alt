@@ -11,6 +11,7 @@ class Config:
         self.ossapi_secret = ""
         self.storage = "../storage"
         self.logs_storage = "../logs"
+        self.debug = False
         self.load_env()
         os.makedirs(self.storage, exist_ok=True)
 
