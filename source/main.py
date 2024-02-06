@@ -3,6 +3,7 @@ from common.service import Service
 from typing import List
 
 import beatmaps.service as beatmaps_svc
+import tracker.service as tracker_svc
 import common.app as app
 import signal
 import sys
@@ -20,13 +21,18 @@ class ServiceHandler:
     
     def get_services(self):
         # TODO: disable services based on config
-        return [beatmaps_svc.get_service()]
-    
+        services = [beatmaps_svc.get_service()]
+        services.extend(tracker_svc.get_services())
+        return services
+
     def run(self):
         for service in self.services:
             service.thread.start()
         for service in self.services:
-            service.thread.join()
+            while True:
+                service.thread.join(timeout=5)
+                if not service.thread.is_alive():
+                    break
             self.logger.warning(f"Service {service.service_name} exited!")
         sys.exit(0)
 

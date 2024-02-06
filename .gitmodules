@@ -4,3 +4,6 @@
 [submodule "source/beatmaps"]
 	path = source/beatmaps
 	url = git@github.com:akatsuki-alt/beatmaps-svc.git
+[submodule "source/tracker"]
+	path = source/tracker
+	url = git@github.com:akatsuki-alt/leaderboard-tracker.git
