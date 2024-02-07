@@ -7,3 +7,6 @@
 [submodule "source/tracker"]
 	path = source/tracker
 	url = git@github.com:akatsuki-alt/leaderboard-tracker.git
+[submodule "source/bot"]
+	path = source/bot
+	url = git@github.com:akatsuki-alt/kompir-bot.git

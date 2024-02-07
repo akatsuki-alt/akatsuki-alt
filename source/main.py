@@ -25,10 +25,16 @@ class ServiceHandler:
         self.logger.debug(f"Received {type(event)}\n{repr(event)}")
     
     def get_services(self):
-        # TODO: disable services based on config
+        disabled_services = app.config.disabled_services.split(",")
         services = [beatmaps_svc.get_service()]
         services.extend(tracker_svc.get_services())
-        return services
+        services_filtered = list()
+        for service in services:
+            if service.service_name in disabled_services:
+                self.logger.warning(f"Service {service.service_name} is disabled!")
+            else:
+                services_filtered.append(service)
+        return services_filtered
 
     def run(self):
         for service in self.services:
