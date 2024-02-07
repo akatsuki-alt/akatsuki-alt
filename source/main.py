@@ -4,6 +4,7 @@ from typing import List
 
 import beatmaps.service as beatmaps_svc
 import tracker.service as tracker_svc
+import bot.discord.bot as discord_bot
 import common.app as app
 import signal
 import sys
@@ -26,7 +27,7 @@ class ServiceHandler:
     
     def get_services(self):
         disabled_services = app.config.disabled_services.split(",")
-        services = [beatmaps_svc.get_service()]
+        services = [beatmaps_svc.get_service(), discord_bot.DiscordBotService()]
         services.extend(tracker_svc.get_services())
         services_filtered = list()
         for service in services:
@@ -40,6 +41,8 @@ class ServiceHandler:
         for service in self.services:
             service.thread.start()
         for service in self.services:
+            if service.daemonize:
+                continue
             while True:
                 service.thread.join(timeout=5)
                 if not service.thread.is_alive():
