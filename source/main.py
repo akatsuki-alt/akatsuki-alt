@@ -1,3 +1,5 @@
+import common.servers # Fix weird circular import
+
 from common.logging import get_logger
 from common.service import Service
 from typing import List
