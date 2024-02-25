@@ -10,3 +10,6 @@
 [submodule "source/bot"]
 	path = source/bot
 	url = git@github.com:akatsuki-alt/kompir-bot.git
+[submodule "source/api"]
+	path = source/api
+	url = git@github.com:akatsuki-alt/api.git
