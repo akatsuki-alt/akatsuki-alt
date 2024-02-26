@@ -13,6 +13,7 @@ class Config:
         self.logs_storage = "../logs"
         self.disabled_services = ""
         self.discord_token = ""
+        self.discord_selfbot_cookie = ""
         self.debug = False
         self.load_env()
         os.makedirs(self.storage, exist_ok=True)
