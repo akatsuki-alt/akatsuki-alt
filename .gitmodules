@@ -13,3 +13,6 @@
 [submodule "source/api"]
 	path = source/api
 	url = git@github.com:akatsuki-alt/api.git
+[submodule "source/wrapper"]
+	path = source/wrapper
+	url = git@github.com:akatsuki-alt/akatsuki-alt-api.git
